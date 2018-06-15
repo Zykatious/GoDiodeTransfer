@@ -1,6 +1,8 @@
 # GoDiodeTransfer
 A Golang server and client to send files over an air-gapped network via a network diode.
 
+File hashes are checked after the file transfer is complete to make sure the data is intact and will alert on the terminal if a file is corrupt.
+
 Usage is as follows:
 
 
