@@ -1,5 +1,5 @@
 # GoDiodeTransfer
-A Golang server and client to send data over an air-gapped network via a network diode.
+A Golang server and client to send files over an air-gapped network via a network diode.
 
 Usage is as follows:
 
