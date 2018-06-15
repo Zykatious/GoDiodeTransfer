@@ -16,6 +16,10 @@ This behaviour can be changed by using the argument __-p__ to change the port an
 
 On the client side:
 
+You will need to set a static ARP route so your system knows where to send the file to, this can be done on a Linux terminal like this:
+
+#### \# arp -s 192.168.0.2 aa:bb:cc:dd:ee:ff
+
 __go run Client.go -f *filename*__
 
 By default the client will send to IP 127.0.0.1 and uses port 1234.
