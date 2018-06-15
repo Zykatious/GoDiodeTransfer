@@ -1,18 +1,18 @@
 # GoDiodeTransfer
-###A Golang server and client to send data over an air-gapped network via a network diode.###
-
-This project was created to allow the transfer of data via UDP to an air-gapped network via a network diode. 
+A Golang server and client to send data over an air-gapped network via a network diode.
 
 Usage is as follows:
 
-1. On the receving side:
+
+On the receving side:
 
 __go run Server.go__
 
 By default the server uses port 1234 and stores transferred files to ./
 This behaviour can be changed by using the argument -p to change the port and -d to change the receiving directory.
 
-2. On the client side:
+
+On the client side:
 
 __go run Client.go -f *filename*__
 
