@@ -6,7 +6,7 @@ File hashes are checked after the file transfer is complete to make sure the dat
 Usage is as follows:
 
 
-On the receving side:
+### On the receving side:
 
 __go run Server.go__
 
@@ -14,11 +14,12 @@ By default the server uses port 1234 and stores transferred files to ./
 This behaviour can be changed by using the argument __-p__ to change the port and __-d__ to change the receiving directory.
 
 
-On the client side:
+### On the client side:
 
 You will need to set a static ARP route so your system knows where to send the file to, this can be done on a Linux terminal like this:
+##### \# arp -s 192.168.0.2 aa:bb:cc:dd:ee:ff
 
-#### \# arp -s 192.168.0.2 aa:bb:cc:dd:ee:ff
+Sending a file:
 
 __go run Client.go -f *filename*__
 
