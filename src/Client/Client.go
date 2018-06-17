@@ -1,7 +1,7 @@
 package main
 
 import (
-	"crypto/md5"
+	"crypto/sha256"
 	"encoding/hex"
 	"flag"
 	"fmt"
@@ -36,7 +36,7 @@ func main() {
 	file, _ := ioutil.ReadFile(*filePtr)
 
 	//Generate hash
-	hash := md5.New()
+	hash := sha256.New()
 	hash.Write(file)
 
 	//Calculate total number of packets.
