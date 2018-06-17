@@ -2,7 +2,7 @@ package main
 
 import (
 	"bytes"
-	"crypto/md5"
+	"crypto/sha256"
 	"encoding/hex"
 	"flag"
 	"fmt"
@@ -46,10 +46,10 @@ func main() {
 		if testEq(packetBuffer[0:10], []byte("!XxSENDxX!")) {
 			//Get total number of packets expected to be received and file hash
 			totalPackets, _ = strconv.Atoi(strings.TrimSpace(string(packetBuffer[10:20])))
-			fileHash = string(packetBuffer[21:53])
+			fileHash = string(packetBuffer[21:85])
 
 			//Trim packet down by stripping null bytes and get receving file's filename
-			trimPacket := bytes.Trim(packetBuffer[53:len(packetBuffer)], "\x00")
+			trimPacket := bytes.Trim(packetBuffer[85:len(packetBuffer)], "\x00")
 			filename = filepath.Base(string(trimPacket))
 
 			//Set command byte and reset counters / receiving file
@@ -58,13 +58,12 @@ func main() {
 			recPackets = 0
 
 			fmt.Printf("\n\nReceiving file %s\n", filename)
-			fmt.Printf("Total packets %d", totalPackets)
 		}
 
 		//Test for control packet to say file transfer is complete.
 		if testEq(packetBuffer[0:10], []byte("!XxDONExX!")) {
 			//Generate hash on received file
-			hash := md5.New()
+			hash := sha256.New()
 			hash.Write(file)
 
 			//Check file hash matches sending file
